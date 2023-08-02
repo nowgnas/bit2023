@@ -2,12 +2,14 @@ package lottery;
 
 import lottery.util.Reward;
 
+import java.text.NumberFormat;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class LotteryProgram {
-    List<Person> people;
-    static int[] winner = new int[6];
-    static int myRank = 0;
+    List<Person> people; // 로또 구매한 사용자
+    static int[] winner = new int[6]; // 로또 맞춘 개수(인덱스)에 따른 사람 수
+    static int myRank = 0; // 내가 맞춘 개수
 
     public void Operator() {
         System.out.println("로또 프로그램을 시작합니다....");
@@ -16,13 +18,19 @@ public class LotteryProgram {
         Set<Integer> numbers = new HashSet<>();
         Scanner sc = new Scanner(System.in);
         while (numbers.size() < 5) {
-            int inference = sc.nextInt();
+            String usrInput = sc.next();
+            if (!Pattern.matches("^[\\d]*$", usrInput)) {
+                System.out.println("숫자를 입력하세요 !");
+                continue;
+            }
+            int inference = Integer.parseInt(usrInput);
             if (numbers.contains(inference) || inference > 50) {
                 System.out.println("다른 숫자를 입력하세요");
                 continue;
             }
             numbers.add(inference);
         }
+        sc.close();
         people = new ArrayList<>();
         // 로또 구매
         Person me = new Person();
@@ -60,7 +68,7 @@ public class LotteryProgram {
             winner[countSameNumber] += 1;
         }
         Reward myResult = Reward.getMyResult(winner, myRank);
-
+        NumberFormat nf = NumberFormat.getCurrencyInstance(Locale.KOREA);
         String sb = "로또 결과 : \n" +
                 answer.toString() + "\n" +
                 "1등 : " + winner[5] + "\n" +
@@ -71,7 +79,7 @@ public class LotteryProgram {
                 "\n" +
                 "나의 결과 : \n" +
                 "등수: " + myResult.getRank() + "\n" +
-                "당첨 금액 : " + myResult.getReward() + "원";
+                "당첨 금액 : " + nf.format(myResult.getReward()) + "원";
         System.out.print(sb);
     }
 

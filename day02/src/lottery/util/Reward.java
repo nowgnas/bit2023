@@ -3,8 +3,8 @@ package lottery.util;
 import lottery.Office;
 
 public class Reward {
-    private int rank;
-    private long reward;
+    private final int rank;
+    private final long reward;
 
     public int getRank() {
         return rank;
@@ -41,23 +41,25 @@ public class Reward {
 
     public static Reward getMyResult(int[] leaderBoard, int correct) {
         long totalReward = Office.getTotalReward();
-        int rank = (1 - 6) * -1;
+        int rank = (correct - 6) * -1;
         switch (rank) {
             case 1:
-                totalReward = totalReward * (100 / Rate.first);
+                totalReward = (long) (totalReward * Rate.first);
                 break;
             case 2:
-                totalReward = totalReward * (100 / Rate.second);
+                totalReward = (long) (totalReward * Rate.second);
                 break;
             case 3:
-                totalReward = totalReward * (100 / Rate.third);
+                totalReward = (long) (totalReward * Rate.third);
                 break;
             case 4:
-                totalReward = totalReward * (100 / Rate.forth);
+                totalReward = (long) (totalReward * Rate.forth);
                 break;
             case 5:
-                totalReward = totalReward * (100 / Rate.fifth);
+                totalReward = (long) (totalReward * Rate.fifth);
                 break;
+            default:
+                totalReward = 0;
         }
         long getReward = totalReward / leaderBoard[correct];
         return new Reward.Builder().reward(getReward).rank(rank).build();

@@ -5,7 +5,7 @@ import lottery.util.CreateRandomNumbers;
 import java.util.Set;
 
 public class Office {
-    private static long totalReward = 5 * 10 ^ 9;
+    private static final long totalReward = (long) (Math.pow(10, 9) * 5);
     private Set<Integer> winNumbers;
 
     public void pickNumbers() {

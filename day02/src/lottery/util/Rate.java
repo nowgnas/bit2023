@@ -1,10 +1,10 @@
 package lottery.util;
 
 public interface Rate {
-    int first = 50;
-    int second = 30;
-    int third = 10;
-    int forth = 8;
-    int fifth = 2;
+    double first = 50.0 / 100;
+    double second = 30.0 / 100;
+    double third = 10.0 / 100;
+    double forth = 8.0 / 100;
+    double fifth = 2.0 / 100;
 
 }
