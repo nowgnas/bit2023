@@ -3,6 +3,7 @@ package frame;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Optional;
 
 public interface DaoFrame<K, V> {
     // generic 을 사용해 클래스에 관계 없이 받을 수 있다
@@ -14,7 +15,7 @@ public interface DaoFrame<K, V> {
 
     int delete(K k) throws Exception;
 
-    V select(K k) throws Exception;
+    Optional<V> select(K k) throws Exception;
 
     List<V> select() throws Exception; // 오버로딩
 

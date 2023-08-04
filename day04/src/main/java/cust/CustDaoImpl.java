@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 public class CustDaoImpl implements DaoFrame<String, Cust> {
@@ -79,7 +80,6 @@ public class CustDaoImpl implements DaoFrame<String, Cust> {
             pstmt = con.prepareStatement(SQL.custDelete);
             pstmt.setString(1, s);
             result = pstmt.executeUpdate();
-            if (result == 0) throw new Exception("삭제 에러");
         } catch (Exception e) {
             log.info("해당 id값을 삭제할 수 없습니다.");
             throw new Exception("삭제 에러 ");
@@ -91,7 +91,7 @@ public class CustDaoImpl implements DaoFrame<String, Cust> {
     }
 
     @Override
-    public Cust select(String s) throws Exception {
+    public Optional<Cust> select(String s) throws Exception {
         Cust cust = null;
         Connection con = cp.getConnection();
         PreparedStatement pstmt = null;
@@ -100,11 +100,12 @@ public class CustDaoImpl implements DaoFrame<String, Cust> {
             pstmt = con.prepareStatement(SQL.custSelect);
             pstmt.setString(1, s);
             rset = pstmt.executeQuery(); // 쿼리에서 예외가 발생하면 pstmt 와 커넥션이 릴리즈 되지 못한채로 예외가 던져진다
-            rset.next();
-            cust = Cust.builder().id(rset.getString("id"))
-                    .pwd(rset.getString("pwd"))
-                    .name(rset.getString("name"))
-                    .build();
+            if (rset.next()) {
+                cust = Cust.builder().id(rset.getString("id"))
+                        .pwd(rset.getString("pwd"))
+                        .name(rset.getString("name"))
+                        .build();
+            }
         } catch (Exception e) {
             log.info(e.getMessage()); // 디버깅 용으로 로그를 찍는 건 괜찮다
             throw new Exception("조회 에러"); // 예외를 던져줘야 클라이언트까지 예외가 난 것을 알 수 있다.
@@ -114,7 +115,7 @@ public class CustDaoImpl implements DaoFrame<String, Cust> {
             // 다 사용하면 release 하기
             cp.releaseConnection(con);
         }
-        return cust;
+        return Optional.of(cust);
     }
 
     @Override
