@@ -75,6 +75,8 @@ public class CustTest {
         }
     }
 
+    // >> day 04 시작
+
     // database 연결 전 junit 테스트
 //
 //    @DisplayName("Insert Test")
