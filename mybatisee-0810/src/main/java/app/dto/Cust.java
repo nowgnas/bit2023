@@ -1,4 +1,4 @@
-package com.example.mybatis.app.dto;
+package app.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,7 +1,7 @@
-package com.example.mybatis.app.cust;
+package app.cust;
 
-import com.example.mybatis.app.dto.Cust;
-import com.example.mybatis.app.frame.DaoFrame;
+import app.dto.Cust;
+import app.frame.DaoFrame;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;

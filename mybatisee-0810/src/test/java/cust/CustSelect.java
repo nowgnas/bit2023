@@ -1,7 +1,7 @@
 package cust;
 
-import com.example.mybatis.app.dto.Cust;
-import com.example.mybatis.app.service.CustServiceImpl;
+import app.dto.Cust;
+import app.service.CustServiceImpl;
 
 
 import org.junit.jupiter.api.DisplayName;

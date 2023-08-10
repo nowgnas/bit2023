@@ -1,4 +1,4 @@
-package com.example.mybatis.app.frame;
+package app.frame;
 
 import org.apache.ibatis.session.SqlSession;
 

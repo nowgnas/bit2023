@@ -1,10 +1,10 @@
-package com.example.mybatis.app.service;
+package app.service;
 
-import com.example.mybatis.app.cust.CustDaoImpl;
-import com.example.mybatis.app.dto.Cust;
-import com.example.mybatis.app.frame.DaoFrame;
-import com.example.mybatis.app.frame.GetSessionFacroty;
-import com.example.mybatis.app.frame.ServiceFrame;
+import app.cust.CustDaoImpl;
+import app.frame.GetSessionFacroty;
+import app.frame.ServiceFrame;
+import app.dto.Cust;
+import app.frame.DaoFrame;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
