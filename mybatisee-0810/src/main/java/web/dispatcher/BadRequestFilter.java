@@ -41,7 +41,7 @@ public class BadRequestFilter implements Filter {
             path = path.substring(path.lastIndexOf("."), path.length());
             work_log.debug("doFilter3----" + path);
             if (!path.equals(".bit")) {
-                ((HttpServletResponse) response).sendRedirect("main.bit");
+                ((HttpServletResponse) response).sendRedirect("main.bit"); // dispatcher 로 전달이 된다
                 return;
             }
         }
