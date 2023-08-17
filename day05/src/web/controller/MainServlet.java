@@ -47,6 +47,8 @@ public class MainServlet extends HttpServlet {
             request.setAttribute("center", "register");
         } else if (cmd.equals("login")) {
             request.setAttribute("center", "login");
+        } else if (cmd.equals("map")) {
+            request.setAttribute("center", "map/map");
         } else if (cmd.equals("loginimpl")) {
             String id = request.getParameter("id");
             String pwd = request.getParameter("pwd");

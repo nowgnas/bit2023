@@ -53,27 +53,31 @@
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="main.bit">HOME</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="js.bit?cmd=js1">JS1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="js.bit?cmd=js2">JS2</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>   
-      <li class="nav-item ">
-        <a class="nav-link" href="#">end1</a>
-      </li>     
-    </ul>
-  </div>  
+    <a class="navbar-brand" href="main.bit">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="js.bit?cmd=js1">JS1</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="js.bit?cmd=js2">JS2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#">end1</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="main.bit?cmd=map">map</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <c:choose>
